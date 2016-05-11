@@ -6,7 +6,7 @@ fi
 
 mkdir -p $JENKINS_HOME
 
-if [ -f .jenkins]; then
+if [ -d .jenkins ]; then
   cd .jenkins
   git pull
   cd ..
@@ -15,5 +15,7 @@ else
 fi
 
 ./plugins.sh plugins.txt
+
+export PATH="`pwd`/scripts":$PATH
 
 java -jar jenkins.war
